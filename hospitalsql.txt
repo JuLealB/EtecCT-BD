@@ -1,0 +1,44 @@
+CREATE DATABASE hospital;
+
+USE hospital
+
+
+CREATE TABLE tbPaciente(
+codAluno INT PRIMARY KEY IDENTITY(100,1),
+nomePaciente varchar(40),
+convenio varchar(40),
+rgPaciente int)
+
+CREATE TABLE tbTelefone(
+codTelefone INT PRIMARY KEY IDENTITY(100,1),
+numeroTelefone varchar(20),
+codPaciente INT FOREIGN KEY REFERENCES tbTelefone(tbPaciente),
+
+CREATE TABLE tbMedico(
+codMedico INT PRIMARY KEY IDENTITY(100,1),
+nomeMedico varchar(40),
+cmMedico INT,
+rgMedico int)
+
+)
+
+CREATE TABLE tbConsulta(
+codConsulta INT PRIMARY KEY IDENTITY(100,1),
+dataConsulta DATE,
+horaConsulta varchar(10),
+codPaciente INT FOREIGN KEY REFERENCES tbConsulta(tbMedico),
+codMedico INT FOREIGN KEY REFERENCES tbConsulta(tbPaciente),
+
+)
+
+CREATE TABLE tbEndereco
+codEndereco INT PRIMARY KEY IDENTITY(100,1),
+logradouro varchar(40),
+numero varchar(20),
+cep varchar(10),
+bairro varchar(40),
+cidade varchar(40),
+estado varchar(40),
+codPaciente INT FOREIGN KEY REFERENCES tbEndereco(tbPaciente),
+
+)
